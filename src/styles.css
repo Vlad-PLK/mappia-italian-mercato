@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700;800;900&family=Lexend:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&family=Caveat:wght@600&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --font-display: 'Epilogue', sans-serif;
+  --font-body: 'Lexend', sans-serif;
+  --font-editorial: 'Newsreader', serif;
+  --font-script: 'Caveat', cursive;
+  --color-paper: #fbfaee;
+  --color-soft: #f1eee4;
+  --color-ink: #1b1c15;
+  --color-muted: #53564b;
+  --color-forest: #143728;
+  --color-forest-strong: #082115;
+  --color-red: #bb1b24;
+  --color-red-soft: #edd2cd;
+  --color-walnut: #3f1d00;
+  --shadow-soft: 0 22px 60px rgba(27, 28, 21, 0.08);
+  --shadow-glow: 0 18px 38px rgba(187, 27, 36, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at top left, rgba(187, 27, 36, 0.08), transparent 32%),
+    radial-gradient(circle at 85% 15%, rgba(20, 55, 40, 0.08), transparent 24%),
+    var(--color-paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+}
+
+.page-noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  background-image:
+    linear-gradient(rgba(27, 28, 21, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 28, 21, 0.12) 1px, transparent 1px);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+.section-band {
+  padding-block: 5.5rem;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  opacity: 0.82;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--color-red);
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-red-soft);
+  padding: 0.55rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.hero-title {
+  margin: 1rem 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.9rem, 7vw, 7.9rem);
+  line-height: 0.88;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  color: var(--color-forest-strong);
+  text-wrap: balance;
+}
+
+.section-title {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.6vw, 4.8rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--color-forest-strong);
+}
+
+.section-copy {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+}
+
+.button-primary,
+.button-secondary,
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.95rem 1.45rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--color-red), #cf2f36);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.filter-chip:hover {
+  transform: translateY(-2px);
+}
+
+.button-secondary,
+.filter-chip {
+  border: 1px solid rgba(20, 55, 40, 0.14);
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--color-forest);
+}
+
+.filter-chip-active {
+  background: var(--color-forest);
+  color: white;
+  border-color: transparent;
+}
+
+.info-pill,
+.feature-card,
+.menu-card,
+.quote-panel,
+.product-card,
+.special-card,
+.contact-panel,
+.drink-row,
+.hero-card {
+  position: relative;
+  z-index: 2;
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+.info-pill,
+.feature-card,
+.drink-row {
+  padding: 1.3rem;
+}
+
+.info-pill-accent {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.hero-image-shell,
+.image-card,
+.contact-image-shell {
+  overflow: hidden;
+  border-radius: 2.4rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-image-shell {
+  aspect-ratio: 4 / 5;
+}
+
+.hero-card {
+  position: absolute;
+  right: -0.5rem;
+  bottom: 1rem;
+  max-width: 17rem;
+  padding: 1.4rem;
+}
+
+.floating-badge,
+.tag-burst,
+.special-card-badge,
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.floating-badge {
+  position: absolute;
+  left: -0.9rem;
+  bottom: 4rem;
+  max-width: 8rem;
+  aspect-ratio: 1;
+  border: 8px solid var(--color-paper);
+  background: #dceecf;
+  color: var(--color-forest);
+  text-align: center;
+  line-height: 1.25;
+  transform: rotate(-10deg);
+}
+
+.script-note {
+  position: absolute;
+  left: -0.75rem;
+  bottom: 1rem;
+  max-width: 13rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 1rem 1.2rem;
+  font-family: var(--font-script);
+  font-size: 1.7rem;
+  line-height: 1.1;
+  color: var(--color-red);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-5deg);
+}
+
+.menu-card,
+.menu-card-featured,
+.quote-panel,
+.contact-panel {
+  padding: 2rem;
+}
+
+.menu-card-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(20, 55, 40, 0.22);
+}
+
+.menu-card-featured {
+  background: linear-gradient(135deg, var(--color-forest), #204d37);
+  color: white;
+}
+
+.menu-card-featured p,
+.menu-card-featured .menu-card-number,
+.menu-card-featured span:last-child {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.tag-burst {
+  position: absolute;
+  right: -0.75rem;
+  bottom: -1rem;
+  background: #f1c955;
+  color: var(--color-forest);
+  transform: rotate(4deg);
+  box-shadow: var(--shadow-soft);
+}
+
+.drink-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(20, 55, 40, 0.08);
+}
+
+.special-card,
+.product-card {
+  padding: 1.2rem;
+}
+
+.special-card-image,
+.product-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  aspect-ratio: 1 / 1;
+}
+
+.special-card-badge,
+.product-tag {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background: var(--color-red);
+  color: white;
+}
+
+.product-media {
+  aspect-ratio: 4 / 5;
+  background: #f5f2eb;
+}
+
+.contact-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.contact-copy {
+  margin-top: 0.45rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.contact-image-shell {
+  min-height: 26rem;
+}
+
+@media (max-width: 767px) {
+  .section-band {
+    padding-block: 4.25rem;
+  }
+
+  .hero-card,
+  .script-note,
+  .floating-badge,
+  .tag-burst {
+    position: static;
+    margin-top: 1rem;
+    transform: none;
+  }
+
+  .hero-card,
+  .script-note,
+  .floating-badge,
+  .tag-burst {
+    max-width: none;
+  }
+
+  .hero-card {
+    margin-inline: auto;
+  }
+}
+
+.brand-mark {
+  font-family: var(--font-editorial);
+  font-size: 1.9rem;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--color-forest);
+}
+
+.mobile-anchor-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0 1.25rem 0.9rem;
+  scrollbar-width: none;
+}
+
+.mobile-anchor-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-anchor-link {
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid rgba(20, 55, 40, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+  padding: 0.7rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+}
